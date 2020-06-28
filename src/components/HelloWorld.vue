@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <div>hellow</div>
+    <div>hi, 晓欢</div>
   </div>
 </template>
 
