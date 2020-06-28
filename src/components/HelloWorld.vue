@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div>hi, 晓欢</div>
+    <div>hi, 晓欢傻子</div>
   </div>
 </template>
 
