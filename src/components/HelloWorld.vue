@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div>hi, 晓欢就职于奥特曼打怪兽公司</div>
+    <div>hi, 晓欢可能去晓圈了</div>
     <img src="../assets/1.jpeg" alt="">
   </div>
 </template>
