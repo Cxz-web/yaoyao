@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <div>hi, 晓欢傻子</div>
+    <img src="../assets/1.jpeg" alt="">
   </div>
 </template>
 
