@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div>小白菜123123123</div>
+    <div>新年快乐</div>
   </div>
 </template>
 
