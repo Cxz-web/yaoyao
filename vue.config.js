@@ -1,3 +1,4 @@
 module.exports = { 
-  publicPath: 'https://cxzweb.club/love-yaoyao'
+  publicPath: process.env.DEV_PUBLIC_URL
 }
+
