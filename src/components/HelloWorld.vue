@@ -2,7 +2,7 @@
   <div class="easy-tip">
      
     <div class="show" v-if="!firStep">
-    
+
     <!-- <div >一个简单易用的文字溢出提示框插件，并支持拓展自定义提示样式，支持任意框架，大小仅有3kb</div> -->
     <div class="desc"> 
       <div class="title">
@@ -29,6 +29,7 @@
       <i class="el-icon-star-on"></i>
       <span>代码大小不到10kb, 长期维护</span>
     </div>
+    
     <div></div>
     </div>
        <div  class="button" ref="go" @click="go">Let's go</div>
@@ -58,6 +59,9 @@
       
       <div  class="ell-1 custom-1" style="left:300px;" ref="test"><el-tag>自定义显示内容</el-tag></div >
 
+      <div  class="ell-1 custom-1" style="left:500px;" ref="test2"><el-tag>自定义显示内容2</el-tag></div >
+
+
      
       
      
@@ -71,8 +75,9 @@
 <script>
 import EasyTip from 'easy-tip';
 
+window.EasyTip = EasyTip;
 
-const easyTip  = new EasyTip({
+const easyTip  = new window.EasyTip({
   displayMark: "easy"
 });
 
@@ -98,7 +103,7 @@ export default {
 
   mounted() {
 
-    this.easyTip2  = new EasyTip({
+    this.easyTip2  = new window.EasyTip({
       effectiveArea: this.$refs.go, 
       customStyle: {
         wrap: {
@@ -128,27 +133,38 @@ export default {
             </div>
           `
 
-          console.log(el)
       this.firStep = true;
-      const easyTip3  = new EasyTip({
-      effectiveArea: this.$refs.test, 
-      
-      customStyle: {
-        wrap: {
-          backgroundColor: '#f56c6c',
-          fontSize: "80px",
-          width:"100px",
-          borderRadius: '20%',
-          textAlign: 'center',
-        },
-          triangle: {
-            backgroundColor: '#f56c6c'
+      const easyTip3  = new window.EasyTip({
+        effectiveArea: this.$refs.test,
+        customStyle: {
+          wrap: {
+            backgroundColor: '#f56c6c',
+            fontSize: "80px",
+            width:"100px",
+            borderRadius: '20%',
+            textAlign: 'center',
           },
-        },
+            triangle: {
+              backgroundColor: '#f56c6c'
+            },
+          },
         custom : {
           contentRender: () => el
         }
       });
+
+      const easyTip4 = new window.EasyTip({
+        effectiveArea: this.$refs.test2,
+        custom : {
+          contentRender: () => `
+          <div>
+          <input/>
+          <button>确认</button>
+          </div>`
+        }
+      })
+
+      easyTip4.init();
       
       
       easyTip3.init();
