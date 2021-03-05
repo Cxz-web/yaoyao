@@ -27,7 +27,7 @@
     </div>
     <div>
       <i class="el-icon-star-on"></i>
-      <span>代码大小不到10kb, 长期维护</span>
+      <span>不引入额外插件，代码大小不到10kb</span>
     </div>
     
     <div></div>
@@ -47,6 +47,22 @@
 
       <el-tag type="danger" class="ell-1 bottom-1" >下边溢出提示{{ content }}</el-tag>
 
+      <div  class="bottom-1" style="left:300px;bottom:100px;background:white;" ref="test3">选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示</div >
+
+
+      <div  class="bottom-1" style="left:500px;bottom:100px;display:flex;justify-content: space-around;font-size:20px;" ref="test4">
+
+                <i class="el-icon-delete icon"  data-tip="删除"></i>
+
+                <i class="el-icon-setting icon" data-tip="工具" ></i>
+
+                <i class="el-icon-zoom-in icon" data-tip="预览" ></i>
+
+      </div >
+
+
+      <el-button round @click="change">圆角按钮</el-button>
+
       <div class="center">
         <el-tag type="danger" class="ell-1" style="left:10%;width:120px;">中间文字溢出{{ content }}</el-tag>
         <el-tag  class="ell-1" style="left:30%;" data-easy="true">文字不溢出强行展示</el-tag >
@@ -60,6 +76,9 @@
       <div  class="ell-1 custom-1" style="left:300px;" ref="test"><el-tag>自定义显示内容</el-tag></div >
 
       <div  class="ell-1 custom-1" style="left:500px;" ref="test2"><el-tag>自定义显示内容2</el-tag></div >
+
+
+
 
 
      
@@ -78,17 +97,19 @@ import EasyTip from 'easy-tip';
 window.EasyTip = EasyTip;
 
 const easyTip  = new window.EasyTip({
-  displayMark: "easy"
+  mustDisplaySign: "easy"
 });
 
 
 export default {
-  name: 'HelloWorld',
+  name: 'Demo',
   data() {
     return {
         content: '还有很多很多的文本内容,还有很多很多的文本内容,还有很多很多的文本内容,还有很多很多的文本内容,还有很多很多的文本内容,还有很多很多的文本内容,还有很多很多的文本内容,还有很多很多本内容',
         firStep: false,
         easyTip2: null,
+        easyTip3: null,
+        flag: false
     }
   },
 
@@ -121,9 +142,21 @@ export default {
      });
 
      this.easyTip2.init();
+
+     
   },
 
   methods: {
+    change() {
+      if(!this.flag) {
+        this.easyTip3.display();
+      } else {
+        this.easyTip3.hide();
+      }
+
+      this.flag = !this.flag;
+      
+    },
     go() {
         this.easyTip2.destroy();
          const el = document.createElement('div');
@@ -134,7 +167,7 @@ export default {
           `
 
       this.firStep = true;
-      const easyTip3  = new window.EasyTip({
+      this.easyTip3  = new window.EasyTip({
         effectiveArea: this.$refs.test,
         customStyle: {
           wrap: {
@@ -152,6 +185,7 @@ export default {
           contentRender: () => el
         }
       });
+      this.easyTip3.init();
 
       const easyTip4 = new window.EasyTip({
         effectiveArea: this.$refs.test2,
@@ -166,9 +200,12 @@ export default {
 
       easyTip4.init();
       
-      
-      easyTip3.init();
-    
+      this.easyTip5 = new window.EasyTip({
+       effectiveArea: this.$refs.test3,
+       triggerEvent: "select"
+     })
+
+     this.easyTip5.init();
     
     }
   }
