@@ -1,105 +1,76 @@
 <template>
-  <div class="easy-tip">
-     
-    <div class="show" v-if="!firStep">
+  <div class="wrap">
+     <div class="common-title">
+       <div class="box">一般使用场景</div>
+     </div>
 
-    <!-- <div >一个简单易用的文字溢出提示框插件，并支持拓展自定义提示样式，支持任意框架，大小仅有3kb</div> -->
-    <div class="desc"> 
-      <div class="title">
-      <span>EasyTip</span>
-      <i class="el-icon-chat-dot-square icon"></i>
-    </div>
-      <div>
-      <i class="el-icon-star-on"></i>
-      <span>任意框架均可使用，引入简单，无须对项目进行改造</span>
-    </div>
-    <div>
-      <i class="el-icon-star-on"></i>
-      <span>自动计算文本溢出情况来决定用户hover时是否展示提示框</span>
-    </div>
-     <div>
-      <i class="el-icon-star-on"></i>
-      <span>仅需全局注册，easy-tip会帮你找出需要展示的元素，不需要繁琐一个个节点去操作</span>
-    </div>
-    <div>
-      <i class="el-icon-star-on"></i>
-      <span>支持自定义显示内容、样式，友好扩展</span>
-    </div>
-    <div>
-      <i class="el-icon-star-on"></i>
-      <span>不引入额外插件，代码大小不到10kb</span>
-    </div>
-    
-    <div></div>
-    </div>
-       <div  class="button" ref="go" @click="go">Let's go</div>
-    </div>
+      <div class="content">
+        <div class="info">
+         
+          <div class="text"> 
+            <div>
+              全局接入一次后，会识别出溢出的文字，hover（默认触发时机为hover）的时候会在合适的位置展示内容
+            </div>
+
+             <img src="./images/4.png" alt="">
+          </div>
+        </div>
+
+        <div class="example">
+          <el-tag type="danger" class="ell-1 common-w" style="margin-bottom:30px;margin-right:20px;">{{ content }}{{content}}</el-tag>
+          <el-tag type="danger" class="ell-2 common-w" style="margin-bottom:30px;margin-right:20px;">{{ content }}</el-tag> 
+          <el-tag type="danger" class="ell-2 common-w" style="margin-bottom:30px;margin-right:20px;">{{ content }}</el-tag> 
+          <el-tag type="danger" class="ell-3 common-w" style="margin-bottom:30px;margin-right:20px;">{{ content }}</el-tag>
+          <el-tag type="danger" class="ell-3 common-w" style="margin-bottom:30px;margin-right:20px;">不超出默认不展示</el-tag>
+        </div>
+      </div>
 
 
+       <div class="content" style="margin-top:50px;">
+        <div class="info">
+         
+          <div class="text"> 
+            <div>
+              在dom元素上往data-tip写入你想展示的文本内容
+            </div>
 
-    <div class="wrap" v-show="firStep">
-    
-      <el-tag type="danger" class="ell-1 left-1" >左边溢出提示{{ content }}</el-tag>
+             <img src="./images/3.png" alt="">
+          </div>
+        </div>
 
-      <el-tag type="danger" class="ell-1 right-1" >右边文字溢出提示{{ content }}</el-tag>
+        <div class="example">
+          
+          <div class="text show">
 
-      <el-tag type="danger" class="ell-1 top-1" >上边溢出提示{{ content }}</el-tag>
+            <!-- 在dom元素上往data-tip写入你想展示的值 -->
+            <i class="el-icon-edit" data-tip="编辑"></i>
 
-      <el-tag type="danger" class="ell-1 bottom-1" >下边溢出提示{{ content }}</el-tag>
+            <i class="el-icon-delete-solid" data-tip="删除"></i>
 
-      <div  class="bottom-1" style="left:300px;bottom:100px;background:white;" ref="test3">选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示选中展示</div >
+            <i class="el-icon-success" data-tip="确认" ></i>
 
+          </div>
+        </div>
+      </div>
 
-      <div  class="bottom-1" style="left:500px;bottom:100px;display:flex;justify-content: space-around;font-size:20px;" ref="test4">
-
-                <i class="el-icon-delete icon"  data-tip="删除"></i>
-
-                <i class="el-icon-setting icon" data-tip="工具" ></i>
-
-                <i class="el-icon-zoom-in icon" data-tip="预览" ></i>
-
-      </div >
-
-
-      <el-button round @click="change">圆角按钮</el-button>
-
-      <div class="center">
-        <el-tag type="danger" class="ell-1" style="left:10%;width:120px;">中间文字溢出{{ content }}</el-tag>
-        <el-tag  class="ell-1" style="left:30%;" data-easy="true">文字不溢出强行展示</el-tag >
-        <el-tag  class="ell-1" style="left:60%;" >文字不溢出默认不展示</el-tag >
-        <el-tag  class="ell-3" style="width:120px;white-space: break-spaces;height:auto;">多行溢出计算：{{ content }}</el-tag  >
+      <div style="display:flex;justify-content: center;margin-top:30px;">
+        <div  class="button2" id="demo" ref="go" @click.once="next">next</div>
       </div>
 
       
-
-      
-      <div  class="ell-1 custom-1" style="left:300px;" ref="test"><el-tag>自定义显示内容</el-tag></div >
-
-      <div  class="ell-1 custom-1" style="left:500px;" ref="test2"><el-tag>自定义显示内容2</el-tag></div >
-
-
-
-
-
-     
-      
-     
-    </div>
-
     
-
   </div>
 </template>
 
 <script>
+
+
+// 简单使用， 两行代码全局接入即可
 import EasyTip from 'easy-tip';
 
-window.EasyTip = EasyTip;
+const easyTip  = new EasyTip();
 
-const easyTip  = new window.EasyTip({
-  mustDisplaySign: "easy"
-});
-
+easyTip.init();
 
 export default {
   name: 'Demo',
@@ -109,205 +80,36 @@ export default {
         firStep: false,
         easyTip2: null,
         easyTip3: null,
-        flag: false
+        flag: false,
+        easyTip: null,
     }
-  },
-
-  props: {
-    msg: String
   },
 
 
   created() {
-    easyTip.init();
+    
   },
 
   mounted() {
+        console.log(123);
 
-    this.easyTip2  = new window.EasyTip({
-      effectiveArea: this.$refs.go, 
-      customStyle: {
-        wrap: {
-          backgroundColor: '#f56c6c',
-          fontSize: "16px",
-          borderRadius: '6px'
-        },
-        triangle: {
-          backgroundColor: '#f56c6c'
-        },
-      },
-      custom : {
-        contentRender: () => `<i class="el-icon-star-off"/> <i class="el-icon-star-off"/> <i class="el-icon-star-off"/> 一起看看效果 <i class="el-icon-star-off"></i> <i class="el-icon-star-off"></i> <i class="el-icon-star-off"></i> `
-      }
-     });
-
-     this.easyTip2.init();
-
-     
+    
   },
 
+ 
+
   methods: {
-    change() {
-      if(!this.flag) {
-        this.easyTip3.display();
-      } else {
-        this.easyTip3.hide();
-      }
-
-      this.flag = !this.flag;
-      
-    },
-    go() {
-        this.easyTip2.destroy();
-         const el = document.createElement('div');
-          el.innerHTML =`
-            <div>
-            <i class="el-icon-moon"></i>
-            </div>
-          `
-
-      this.firStep = true;
-      this.easyTip3  = new window.EasyTip({
-        effectiveArea: this.$refs.test,
-        customStyle: {
-          wrap: {
-            backgroundColor: '#f56c6c',
-            fontSize: "80px",
-            width:"100px",
-            borderRadius: '20%',
-            textAlign: 'center',
-          },
-            triangle: {
-              backgroundColor: '#f56c6c'
-            },
-          },
-        custom : {
-          contentRender: () => el
-        }
-      });
-      this.easyTip3.init();
-
-      const easyTip4 = new window.EasyTip({
-        effectiveArea: this.$refs.test2,
-        custom : {
-          contentRender: () => `
-          <div>
-          <input/>
-          <button>确认</button>
-          </div>`
-        }
-      })
-
-      easyTip4.init();
-      
-      this.easyTip5 = new window.EasyTip({
-       effectiveArea: this.$refs.test3,
-       triggerEvent: "select"
-     })
-
-     this.easyTip5.init();
-    
+    next() {
+      this.$emit('next')
     }
-  }
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
-.easy-tip {
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
-  font-family: monospace;
+<style scoped>
 
-}
 
-.title{
-  width: 718px;
-  text-align: left;
-  font-size: 50px;
-  padding-top: 100px;
-  font-weight: 500;
-  color: #f35626;
-  margin-bottom: 50px;
-}
-
-.icon {
-  position: relative;
-  top: -14px;
-  left: 2px;
-}
-
-.show{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.desc{
-  color: #f35626;
-  font-size: 20px;
-  font-weight: 500;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 50px;
-
-}
-
-.button{
-  width: 200px;
-  border: 1px solid #f35626;
-  border-radius: 12px;
-  cursor: pointer;
-  line-height: 38px;
-  font-size: 28px;
-  background: #f56c6c;
-  color: white;
-  margin-top: 100px;
-}
-
-.button:hover {
-  opacity: 0.6;
-  font-weight: 400;
-}
-
-.desc i {
-  margin-right: 20px;
-}
-
-.ell-1 {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.ell-2 {
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
-
-.ell-3 {
-  -webkit-box-orient: vertical;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-}
-
-.wrap1 {
-  width: 200px;
-}
-
-.wrap{
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
 
 .left-1 {
   position: absolute;
@@ -357,6 +159,17 @@ export default {
   position: absolute;
   top: 70%;
   left: 50%;
+}
+
+.show{
+  display: flex;
+  width: 300px;
+  font-size: 22px;
+  justify-content: space-around;
+}
+
+.test22{
+  background: transparent;
 }
 
 </style>

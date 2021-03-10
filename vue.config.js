@@ -1,4 +1,9 @@
 const CompressionPlugin = require('compression-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const isAnalysisMode = process.env.STAGE === 'analysis';
+
+
+console.log(isAnalysisMode)
 
 /* eslint-disable */
 module.exports = { 
@@ -6,7 +11,18 @@ module.exports = {
 
   productionSourceMap: false,
 
+  lintOnSave: false,
+
   configureWebpack: config => {
+    if(isAnalysisMode) {
+      return {plugins: [
+        new BundleAnalyzerPlugin({
+          analyzerPort: Number(8300) - 1,
+        })
+      ]} 
+    }
+
+
     if (process.env.NODE_ENV === 'production') {
       return {
         plugins: [
